@@ -1,6 +1,8 @@
 from flask import Flask, render_template, request, json, jsonify, url_for, flash, redirect
+from flask_cors import CORS
 
 app = Flask(__name__, static_url_path = '/static/')
+CORS(app)
 
 @app.route('/')
 def login():
@@ -8,12 +10,12 @@ def login():
 
 @app.route('/checklogin', methods=['POST'])
 def checklogin():
-	user =  request.form['email'];
-	password = request.form['password'];
-	if user in ['Anish', 'Leonie', 'Vineet'] and password in ['Anish', 'Leonie', 'Vineet']:
-		return redirect(url_for('dashboard'))
-	flash("Unauthorized Officer!")
-	return app.send_static_file('Login/index.html')
+	print request.get_json(force=True)
+	# password = request.form['password']
+	# if user in ['Anish', 'Leonie', 'Vineet'] and password in ['Anish', 'Leonie', 'Vineet']:
+	# 	return redirect(url_for('dashboard'))
+	# flash("Unauthorized Officer!")
+	# return app.send_static_file('Login/index.html')
 
 @app.route('/dashboard')
 def dashboard():
