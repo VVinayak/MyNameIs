@@ -48,29 +48,50 @@
                 <div class="row">
                     <div class="col-lg-5 col-lg-offset-1 col-md-5 col-md-offset-0">
                         <h1 class="text-center" style="margin-top:10px;margin-bottom:15px;font-size:32px;">Time</h1>
-                        <h1 class="text-center" style="margin-top:10px;margin-bottom:15px;font-size:32px;">
-                            <strong>12:00 AM</strong>
+                        <h1 class="text-center" style="margin-top:10px;margin-bottom:15px;font-size:32px;" >
+                            <strong id="time">12:00 AM</strong>
                         </h1>
                         <h1 class="text-center" style="margin-top:10px;margin-bottom:15px;font-size:32px;">Current Refugee Count </h1>
                         <h1 class="text-center" style="margin-top:10px;margin-bottom:15px;font-size:32px;">
-                            <strong>500 </strong>
+                            <strong>52,385 </strong>
                         </h1>
                         <h1 class="text-center" style="margin-top:10px;margin-bottom:15px;font-size:32px;">Availability Remaining</h1>
                         <h1 class="text-center" style="margin-top:10px;margin-bottom:15px;font-size:32px;">
-                            <strong>500 </strong>
+                            <strong>2,615 </strong>
                         </h1>
                         <h1 style="margin-top:10px;margin-bottom:15px;font-size:32px;"> </h1>
                     </div>
                     <div class="col-lg-5 col-lg-offset-1 col-md-6 col-md-offset-1">
                         <ul class="list-group">
                             <li class="list-group-item">
-                                <span>List Group Item 1</span>
+                                <span><strong>01/28 07:14 AM &nbsp; &nbsp; &nbsp; &nbsp; </strong> 19 new refugees arrived at Khuzestan Camp, Iraq</span>
                             </li>
                             <li class="list-group-item">
-                                <span>List Group Item 2</span>
+                                <span><strong>01/28 06:14 AM &nbsp; &nbsp; &nbsp; &nbsp; </strong> 3 new refugees arrived at Kakuma Camp, Kenya</span>
                             </li>
                             <li class="list-group-item">
-                                <span>List Group Item 3</span>
+                                <span><strong>01/27 02:14 PM &nbsp; &nbsp; &nbsp; &nbsp; </strong> 798 new food packets arrived at Calais Camp, France</span>
+                            </li>
+                            <li class="list-group-item">
+                                <span><strong>01/26 11:14 PM &nbsp; &nbsp; &nbsp; &nbsp; </strong> 118 new refugees arrived at Pugnido Camp, Ethiopia</span>
+                            </li>
+                            <li class="list-group-item">
+                                <span><strong>01/25 07:14 PM &nbsp; &nbsp; &nbsp; &nbsp; </strong> 37 new refugees arrived at Calais Camp, France</span>
+                            </li>
+                            <li class="list-group-item">
+                                <span><strong>01/24 09:14 AM &nbsp; &nbsp; &nbsp; &nbsp; </strong> 26 new refugees arrived at Osmaniye Camp, Turkey</span>
+                            </li>
+                            <li class="list-group-item">
+                                <span><strong>01/24 02:14 PM &nbsp; &nbsp; &nbsp; &nbsp; </strong> 773 new medical supplies arrived at Zaatari Camp</span>
+                            </li>
+                            <li class="list-group-item">
+                                <span><strong>01/24 06:14 PM &nbsp; &nbsp; &nbsp; &nbsp; </strong> 37 new refugees arrived at Kakuma Camp, Kenya</span>
+                            </li>
+                            <li class="list-group-item">
+                                <span><strong>01/23 10:14 AM &nbsp; &nbsp; &nbsp; &nbsp; </strong> 98 new food packets arrived at Pugnido Camp</span>
+                            </li>
+                            <li class="list-group-item">
+                                <span><strong>01/23 04:14 PM &nbsp; &nbsp; &nbsp; &nbsp; </strong> 36 new refugees arrived at Osmaniye Camp, Turkey</span>
                             </li>
                         </ul>
                     </div>
@@ -83,6 +104,15 @@
             </div>
         </div>
     </div>
+    <script>
+        function updateClock() {
+            time = new Date().toLocaleTimeString('en-US', {hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true})
+            document.getElementById('time').innerHTML = time;
+            setTimeout(updateClock, 1000);
+        }
+        updateClock();
+    </script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>
