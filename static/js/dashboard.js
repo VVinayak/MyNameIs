@@ -27,8 +27,9 @@ function convertCanvasToImage(canvas) {
 
 $(function(){
 	$('button').click(function(){
-		var user = $('#inputUsername').val();
-		var pass = $('#inputPassword').val();
+		var user = $('email').val();
+		var pass = $('password').val();
+		console.log(user,pass);
 		$.ajax({
 			url: '/checklogin',
 			data: $('form').serialize(),
@@ -53,11 +54,20 @@ $(function(){
 
 // Trigger photo take
 $(function(){
-	$('snap').click(function(){
+	$('#start_ID').click(function(){
 		context.drawImage(video, 0, 0, 640, 480);
 		var image = convertCanvasToImage(canvas);
+		var x = document.getElementById("take_snapshot");
+		var y = document.getElementById("start_identify");
+	    if (x.style.display === "none") {
+	        x.style.display = "block";
+	        y.style.display = "none";
+	    } else {
+	        x.style.display = "none";
+	        y.style.display = "block";
+	    }
 		$.ajax({
-			url: 'https://westcentralus.api.cognitive.microsoft.com/face/v1.0/persongroups/',
+			url: 'https://westcentralus.api.cognitive.microsoft.com/face/v1.0/persongroups/refugees',
 			data: image,
 			type: 'PUT',
 			success: function(response){

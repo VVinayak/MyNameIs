@@ -1,22 +1,34 @@
-from flask import Flask, render_template, request, json, jsonify, url_for, flash
+from flask import Flask, render_template, request, json, jsonify, url_for, flash, redirect
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path = '/static/')
 
 @app.route('/')
-def login:
-	return render_template('login.html')
+def login():
+	return app.send_static_file('Login/index.html')
 
 @app.route('/checklogin', methods=['POST'])
-def checklogin:
-	user =  request.form['username'];
+def checklogin():
+	user =  request.form['email'];
 	password = request.form['password'];
 	if user in ['Anish', 'Leonie', 'Vineet'] and password in ['Anish', 'Leonie', 'Vineet']:
 		return redirect(url_for('dashboard'))
 	flash("Unauthorized Officer!")
-	return render_template('login.html')
+	return app.send_static_file('Login/index.html')
 
-@app.route('/dashboard'):
-	return render_template('dashboard.html')
+@app.route('/dashboard')
+def dashboard():
+	return app.send_static_file('Dashboard/index.html')
 
-@app.route('/snapshot'):
+@app.route('/identify')
+def identify():
+	return app.send_static_file('Identify/index.html')
+
+@app.route('/manage')
+def manage():
+	return app.send_static_file('Manage/index.html')
+
+# @app.route('/snapshot'):
+
+if __name__ == '__main__':
+	app.run(host = 'localhost', port = 8000, debug = True)
 	
