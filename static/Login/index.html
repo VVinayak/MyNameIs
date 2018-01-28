@@ -55,8 +55,10 @@
                 $.post("http://localhost:8080/checklogin", {
                     username: user,
                     password: pass
-                }, function (err, data) {
-                    console.log(data)
+                }, function (data) {
+                    if (data.status === "success") {
+                        $(location).attr('href', '/dashboard')
+                    }
                 });
             });
         });
